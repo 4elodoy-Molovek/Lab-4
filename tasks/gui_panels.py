@@ -379,6 +379,9 @@ class ResultView:
                 f"Требуемая точность ε ≤ {EPS_TARGET:.1e}")
             messagebox.showinfo("Результаты (тестовая задача)", text)
         else:
+            fine_eps_apost = d['fine_eps_apost'] * 1e-2
+            fine_eps_apostt = d['fine_eps_apost'] * 1e-4
+            fine_eps_N = d['fine_eps_N'] * 1e-2
             text = (
                 "Справка для основной задачи\n\n"
                 f"Сетка: n = {d['n']}, m = {d['m']}\n"
@@ -394,6 +397,8 @@ class ResultView:
                 "Контроль точности (правило Рунге)\n"
                 f"Сетка с половинным шагом: n = {d['fine_n']}, m = {d['fine_m']}\n"
                 f"Итераций на (2n, 2m): {d['fine_iters']}\n"
+                f"Апостериорная оценка ε метода: {fine_eps_apost:.4e}\n"
+                f"Норма шага на контрольной сетке: {fine_eps_apostt:.4e}\n"
                 f"Точность ε2 = max|v − v2|: {d['eps2']:.4e}\n"
                 f"Узел макс. отклонения: x = {d['eps2_x']:g}, y = {d['eps2_y']:g}\n\n"
                 f"Требуемая точность ε ≤ {EPS_TARGET:.1e}")
